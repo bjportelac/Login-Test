@@ -5,6 +5,9 @@
  */
 package Frontera;
 
+import Control.ValidarLogin;
+import Entidad.Usuario;
+
 /**
  *
  * @author benga
@@ -40,6 +43,11 @@ public class Ingreso extends javax.swing.JPanel {
         jLabel2.setText("Contraseña");
 
         AceptarB.setText("Aceptar");
+        AceptarB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AceptarBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -66,7 +74,7 @@ public class Ingreso extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreTF, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(NombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -78,6 +86,18 @@ public class Ingreso extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AceptarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarBActionPerformed
+        // TODO add your handling code here:
+        Usuario a = new Usuario();
+        a.setNombre(NombreTF.getText());
+        a.setPassword(ContrasenaTF.getText());
+        
+        ValidarLogin validar = new ValidarLogin();
+        System.out.println("-------------");
+        String resultado = validar.verificarLogin(a);
+        System.out.println(resultado);
+    }//GEN-LAST:event_AceptarBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

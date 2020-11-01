@@ -5,6 +5,10 @@
  */
 package Frontera;
 
+import Entidad.Usuario;
+import Entidad.Sistema;
+import java.util.ArrayList;
+
 /**
  *
  * @author Brayan Portela
@@ -13,8 +17,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     private Registro registro = new Registro();
     private Ingreso ingreso = new Ingreso();
+    public static Sistema sistema = new Sistema();
+    
     public FramePrincipal() {
         initComponents();
+        inicializacion();
     }
 
     /**
@@ -142,6 +149,43 @@ public class FramePrincipal extends javax.swing.JFrame {
         });
     }
 
+    public void inicializacion(){
+        
+        //Array list de usuarios
+        ArrayList<Usuario> usuario = new ArrayList<Usuario>();
+        
+        // Creacion de usuarios
+        Usuario a = new Usuario();
+        Usuario b = new Usuario();
+        Usuario c = new Usuario();
+        
+        //Ajustes de atributos
+        a.setNombre("Alex");
+        a.setPassword("1234");
+        b.setNombre("Camilo");
+        b.setPassword("0000");
+        c.setNombre("David");
+        c.setPassword("9876");
+        
+        //Añadir usuarios al arraylist
+        usuario.add(a);
+        usuario.add(b);
+        usuario.add(c);
+        
+        //añadir regisstro de usuarios en el sistema
+        sistema.setUsuarios(usuario);
+        
+        //recorrer el arraylist de sistema
+        for (Usuario u:sistema.getUsuarios()){
+            System.out.println(u.getNombre());
+            System.out.println(u.getPassword());
+            System.out.println("-----------------");
+        }
+        
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ingresoB;
     private javax.swing.JPanel jPanel1;
